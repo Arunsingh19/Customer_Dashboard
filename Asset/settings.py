@@ -39,15 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
-    # 'djoser',
     'tracker'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,6 +77,14 @@ WSGI_APPLICATION = 'Asset.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'customer_dashboard',
+#         'HOST': 'localhost',
+#         'USER': 'root',
+#         'PASSWORD': 'Arun@7708'
+#     }
+# }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'AssetTracker',
@@ -89,7 +94,6 @@ DATABASES = {
         'PORT' : '5432'
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -131,24 +135,31 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES':(
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ),
+# }
 
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES' : ('JWT',), 
-    # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    # 'TOKEN_TYPE_CLAIM': 'token_type',
-    # 'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
-    'ACCESS_TOKEN_LIFETIME' : timedelta(seconds=30)
-}
+# SIMPLE_JWT = {
+#     'AUTH_HEADER_TYPES' : ('JWT',), 
+#     # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+#     # 'TOKEN_TYPE_CLAIM': 'token_type',
+#     # 'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+#     'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=1)
+# }
 
-# AUTH_USER_MODEL = 'tracker.Customer'
-# AUTHENTICATION_BACKENDS = ( 'tracker.backends.UserAuthBackend', )
+# PASSWORD_HASHERS = [
+#   'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+#   'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+#   'django.contrib.auth.hashers.Argon2PasswordHasher',
+#   'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+#   'django.contrib.auth.hashers.BCryptPasswordHasher',
+#   'django.contrib.auth.hashers.SHA1PasswordHasher',
+#   'django.contrib.auth.hashers.MD5PasswordHasher',
+#   'django.contrib.auth.hashers.UnsaltedSHA1PasswordHasher',
+#   'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
+#   'django.contrib.auth.hashers.CryptPasswordHasher',
+# ]
 
-# SESSION_EXPIRE_SECONDS = 60  # 900 - >15 minutes = 15 * 60
-# SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# SESSION_SAVE_EVERY_REQUEST = True
+# ENCRYPT_KEY = b'YL5E4f0ybOeub-n335GXVgHmY7ZYhkUo0j9Q6Hu4h70='
